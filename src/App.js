@@ -62,7 +62,7 @@ function App() {
 
         <button onClick={() => setShowColorPicker(!showColorPicker)} >Switch Picker</button>
         {/* Text displaying CMYK in a bold font */}
-        <h1>CMYK</h1>
+        <h5>C M Y K</h5>
         <h2>{cmykValue.join(" ")}</h2>
 
         <div className=''>
