@@ -52,6 +52,10 @@ function App() {
     return [c_ml.toFixed(1), m_ml.toFixed(1), y_ml.toFixed(1), k_ml.toFixed(1), w_ml.toFixed(1)];
   }
 
+  const inverseColor = (color) => {
+    return `rgba(${255 - color.rgb.r}, ${255 - color.rgb.g}, ${255 - color.rgb.b}, ${color.rgb.a})`;
+  }
+
   return (
     <div className="App">
       <header className="App-header" style={{ backgroundColor: `${color.hex}` }}>
@@ -62,18 +66,22 @@ function App() {
 
         <button onClick={() => setShowColorPicker(!showColorPicker)} >Switch Picker</button>
         {/* Text displaying CMYK in a bold font */}
-        <h5>C M Y K</h5>
-        <h2>{cmykValue.join(" ")}</h2>
+        <div style={{ color: inverseColor(color) }}>
+          <h5>C M Y K</h5>
+          <h2>{cmykValue.join(" ")}</h2>
+        </div>
 
-        <div className=''>
+        <div style={{ color: inverseColor(color) }}>
           <label>Volume</label>
           <div className='beaker'>
             <img src={Beaker} alt="Beaker" width="100px" height="100px" />
             <input type="range" min="0" max="1000" step="10" onChange={handleVolumeChange} value={volume} class="volume-slide" />
           </div>
         </div>
-        <h3>{volume} ml</h3>
-        <h4>{cmykVolumes.join(" ml ")}</h4>
+        <div style={{ color: inverseColor(color)}}>
+          <h3>{volume} ml</h3>
+          <h4>{cmykVolumes.join(" ml ")}</h4>
+        </div>
         <button onClick={handleColorOrder}>Order Color Mix</button>
       </header>
     </div>
