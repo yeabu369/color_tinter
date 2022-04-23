@@ -5,7 +5,14 @@ import { SketchPicker } from 'react-color';
 import Beaker from './assets/beaker.jpeg';
 
 function App() {
-  const [color, setColor] = useState("#000000");
+  const [color, setColor] = useState({
+    rgb: {
+      r: 0,
+      g: 0,
+      b: 0,
+      a: 1,
+    }
+  });
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [cmykValue, setCmykValue] = useState([0, 0, 0, 0]);
   const [cmykVolumes, setCmykVolumes] = useState([0, 0, 0, 0, 0]);
@@ -53,7 +60,7 @@ function App() {
   }
 
   const inverseColor = (color) => {
-    return `rgba(${255 - color.rgb.r}, ${255 - color.rgb.g}, ${255 - color.rgb.b}, ${color.rgb.a})`;
+    return `rgba(${255 - color.rgb.r}, ${255 - color.rgb.g}, ${255 - color.rgb?.b}, ${color.rgb?.a})`;
   }
 
   return (
@@ -65,7 +72,7 @@ function App() {
         /> : <SketchPicker color={color} onChange={handleColorChange} />}
 
         <button onClick={() => setShowColorPicker(!showColorPicker)} >Switch Picker</button>
-        {/* Text displaying CMYK in a bold font */}
+
         <div style={{ color: inverseColor(color) }}>
           <h5>C M Y K</h5>
           <h2>{cmykValue.join(" ")}</h2>
@@ -78,7 +85,7 @@ function App() {
             <input type="range" min="0" max="1000" step="10" onChange={handleVolumeChange} value={volume} class="volume-slide" />
           </div>
         </div>
-        <div style={{ color: inverseColor(color)}}>
+        <div style={{ color: inverseColor(color) }}>
           <h3>{volume} ml</h3>
           <h4>{cmykVolumes.join(" ml ")}</h4>
         </div>
