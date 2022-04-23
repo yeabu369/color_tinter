@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #f4f4f4;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,54 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+button {
+  background-color: #333;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 20%;
+}
+
+.volume-slide {
+  orientation: vertical;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  background-color: transparent;
+  /* rotate counter-clockwise by 90 degree */
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+
+  /* Change slider color */
+  -webkit-slider-runnable-track {
+    background: #333;
+  }
+}
+
+.border {
+  border: 1px solid #ddd;
+}
+
+/* Overlay elements on top of each other in this div */
+.beaker {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.beaker img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
