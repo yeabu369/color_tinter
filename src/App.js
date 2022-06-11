@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { SwatchesPicker } from 'react-color';
 import { SketchPicker } from 'react-color';
 import Beaker from './assets/beaker.jpeg';
+import axios from 'axios';
 
 function App() {
   const [color, setColor] = useState({
@@ -25,8 +26,9 @@ function App() {
     setCmykVolumes(getVolumeProportion(cmykValue, volume));
   };
 
-  const handleColorOrder = (event) => {
-
+  const handleColorOrder = async (event) => {
+    const response = await axios.get("https://2ee9-197-156-86-59.eu.ngrok.io");
+    console.log(response);
   }
 
   const handleVolumeChange = (event) => {
@@ -64,8 +66,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header" style={{ backgroundColor: `${color.hex}` }}>
+    <div className="App flex border">
+      <main className="App-header border-2 border-black" style={{ backgroundColor: `${color.hex}` }}>
         {showColorPicker ? <SwatchesPicker
           color={color}
           onChange={handleColorChange}
@@ -90,7 +92,7 @@ function App() {
           <h4>{cmykVolumes.join(" ml ")}</h4>
         </div>
         <button onClick={handleColorOrder}>Order Color Mix</button>
-      </header>
+      </main>
     </div>
   );
 }
