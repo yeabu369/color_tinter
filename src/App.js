@@ -27,8 +27,21 @@ function App() {
   };
 
   const handleColorOrder = async (event) => {
-    const response = await axios.get("https://2ee9-197-156-86-59.eu.ngrok.io");
-    console.log(response);
+    const url = "https://cfb8-197-156-107-162.ngrok.io/mix_colors";
+    try {
+      const { data } = await axios.post(url, {
+        cmyk: {
+          c_ml: parseFloat(cmykVolumes[0]),
+          m_ml: parseFloat(cmykVolumes[1]),
+          y_ml: parseFloat(cmykVolumes[2]),
+          k_ml: parseFloat(cmykVolumes[3]),
+          w_ml: parseFloat(cmykVolumes[4]),
+        },
+      });
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const handleVolumeChange = (event) => {
@@ -75,7 +88,7 @@ function App() {
 
         <button onClick={() => setShowColorPicker(!showColorPicker)} >Switch Picker</button>
 
-        <div style={{ color: inverseColor(color) }}>
+        <div className='border' style={{ color: inverseColor(color) }}>
           <h5>C M Y K</h5>
           <h2>{cmykValue.join(" ")}</h2>
         </div>
