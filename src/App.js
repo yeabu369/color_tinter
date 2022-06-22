@@ -27,7 +27,7 @@ function App() {
   };
 
   const handleColorOrder = async (event) => {
-    const url = "https://c33a-197-156-103-76.eu.ngrok.io/mix_colors";
+    const url = "https://4f28-197-156-103-160.eu.ngrok.io/mix_colors";
     try {
       const { data } = await axios.post(url, {
         cmyk: {
